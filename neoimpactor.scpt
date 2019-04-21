@@ -437,8 +437,8 @@ on installation_watcher(filename, index)
 		
 		set isSuccess to true
 		
+		log "Checking installation status..."
 		repeat until (not (exists progress indicator 1 of window "Cydia Impactor"))
-			log "Checking installation status..."
 			
 			set listdialog to get windows whose description is "dialog"
 			
@@ -464,11 +464,11 @@ on installation_watcher(filename, index)
 		end repeat
 		
 		# send the notification
-		-- if isSuccess then
-		-- 	my complete_notification(filename, index)
-		-- else
-		-- 	my failed_notification(filename, index)
-		-- end if
+		if isSuccess then
+			my complete_notification(filename, index)
+		else
+			my failed_notification(filename, index)
+		end if
 	end tell
 end installation_watcher
 
